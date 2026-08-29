@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LEDビジョン販売サイト | 業種別LP一覧</title>
+<link rel="stylesheet" href="assets/css/style.css">
+<style>
+  .index-hero { padding: 72px 0 40px; }
+  .index-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+    margin-top: 40px;
+  }
+  .index-card {
+    background: var(--bg);
+    padding: 26px;
+    text-decoration: none;
+    color: var(--text);
+    display: block;
+  }
+  .index-card:hover { background: var(--panel); }
+  .index-card .tag {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--cyan);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 10px;
+  }
+  .index-card h3 {
+    font-family: var(--font-display);
+    font-size: 20px;
+    text-transform: uppercase;
+    letter-spacing: 0.01em;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="colorbar"><span></span><span></span><span></span><span></span><span></span></div>
+  <div class="wrap nav">
+    <div class="logo">LED<span>VISION</span></div>
+    <div style="font-family: var(--font-mono); font-size:12px; color: var(--text-dim);">業種を選んでください</div>
+  </div>
+</header>
+
+<section class="index-hero">
+  <div class="wrap">
+    <div class="eyebrow">CHOOSE YOUR INDUSTRY</div>
+    <h1 class="headline" style="font-size:clamp(30px,4.5vw,52px);">業種を選んで、<br>ぴったりのビジョンを見つける。</h1>
+    <p class="hero-sub">スタジアムから病院まで、業種ごとに使い方や訴求ポイントが変わります。気になる業種を選んで、詳細ページをご覧ください。</p>
+
+    <div class="index-grid">
+      <a class="index-card" href="stadium.html"><div class="tag">01 / Stadium &amp; Arena</div><h3>スタジアム・アリーナ</h3></a>
+      <a class="index-card" href="retail.html"><div class="tag">02 / Retail</div><h3>店舗・商業施設</h3></a>
+      <a class="index-card" href="event.html"><div class="tag">03 / Event Venue</div><h3>イベント会場・展示会</h3></a>
+      <a class="index-card" href="hotel.html"><div class="tag">04 / Hotel</div><h3>ホテル・宿泊施設</h3></a>
+      <a class="index-card" href="office.html"><div class="tag">05 / Office</div><h3>オフィスビル・エントランス</h3></a>
+      <a class="index-card" href="mall.html"><div class="tag">06 / Shopping Mall</div><h3>ショッピングモール</h3></a>
+      <a class="index-card" href="government.html"><div class="tag">07 / Government</div><h3>官公庁・自治体</h3></a>
+      <a class="index-card" href="school.html"><div class="tag">08 / School</div><h3>学校・教育機関</h3></a>
+      <a class="index-card" href="hospital.html"><div class="tag">09 / Hospital</div><h3>医療機関・病院</h3></a>
+      <a class="index-card" href="transit.html"><div class="tag">10 / Transit</div><h3>駅・空港</h3></a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap footer-wrap">
+    <div class="footer-company">
+      <div class="footer-name">株式会社JPクリエイト</div>
+      <div class="footer-contact">TEL: 0120-339-114 &nbsp;/&nbsp; Email: info@jpcreate.com</div>
+    </div>
+    <div>© 2026 JP CREATE Co., Ltd. All rights reserved.</div>
+  </div>
+</footer>
+
+</body>
+</html>
