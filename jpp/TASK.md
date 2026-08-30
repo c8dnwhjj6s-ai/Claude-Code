@@ -1,6 +1,22 @@
-# やりたいこと
+# 進捗状況（2026-08-30時点）
 
-通販サイト https://jp-signage.ocnk.net/ にある商品（約300件）を1つずつ紹介する
+LEDカテゴリの74商品分については完了しました。
+
+- `jpp/data/products.json` … スクレイピングした74商品のデータ（商品名・価格・説明・スペック・在庫状況・画像パス）
+- `jpp/tools/scrape_products.py` … jp-signage.ocnk.netのLEDカテゴリ(product-list/13)から商品情報と写真を取得するスクリプト
+- `jpp/tools/generate_products_page.py` … products.jsonから商品ページ(`jpp/products/<id>.html`)と一覧ページ(`jpp/index.html`)を生成するスクリプト
+- `jpp/assets/img/products/<id>/` … 商品写真（ダウンロード済み）
+
+サイト全体では実際は1,236商品あることが判明しましたが、当初の想定（約300件）に近く、
+既存の`led-vision-lp`（LEDビジョン専門サイト）と対象が一致するLEDカテゴリ(74件)のみを
+ユーザーの了承を得て対象にしました。
+
+全商品(1,236件)や他カテゴリへの拡大を行う場合は、`scrape_products.py`の
+`CATEGORY_URL`を変更し、同じ手順で再実行すれば同様に生成できます。
+
+## やりたいこと（元の依頼内容）
+
+通販サイト https://jp-signage.ocnk.net/ にある商品を1つずつ紹介する
 特設ページ（LP）を自動で作る。
 
 ## 進め方
