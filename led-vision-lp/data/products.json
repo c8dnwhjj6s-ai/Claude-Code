@@ -1,0 +1,72 @@
+{
+  "page": {
+    "title": "製品ラインナップ | LEDビジョン販売サイト",
+    "meta_description": "屋内・屋外・レンタル・クリエイティブ用途に対応したLED VISIONの製品ラインナップ。ピクセルピッチ・輝度・防水規格などのスペックを製品ごとに比較できます。",
+    "eyebrow": "PRODUCT LINEUP",
+    "headline_html": "用途で選ぶ、<em>4</em>つのビジョンシリーズ。",
+    "hero_sub": "設置場所や目的に合わせて最適なモデルを選定できるよう、屋内・屋外・レンタル・クリエイティブの4シリーズをラインナップしています。",
+    "form_page_label": "製品ページ (products.html)"
+  },
+  "products": [
+    {
+      "id": "indoor-fine",
+      "code": "IF Series",
+      "theme": "cyan",
+      "tag_en": "Indoor Fine Pitch",
+      "name": "屋内 高精細ビジョン",
+      "summary": "1mm台の画素ピッチで、近距離視聴でも粒感のない滑らかな映像を実現する屋内向けモデルです。",
+      "best_for": ["エントランス", "会議室・ショールーム", "店舗什器"],
+      "specs": [
+        { "label": "Pixel Pitch", "value": "1.2mm〜1.9mm" },
+        { "label": "Max Brightness", "value": "1,000nit" },
+        { "label": "Refresh Rate", "value": "3840Hz" },
+        { "label": "Design", "value": "ベゼルレス / ファンレス" }
+      ]
+    },
+    {
+      "id": "outdoor-bright",
+      "code": "OB Series",
+      "theme": "red",
+      "tag_en": "Outdoor High Bright",
+      "name": "屋外 高輝度ビジョン",
+      "summary": "直射日光下でも視認できる高輝度パネルと、防水・耐候設計で屋外の常設用途に対応します。",
+      "best_for": ["スタジアム・アリーナ", "駅・空港", "屋外看板"],
+      "specs": [
+        { "label": "Pixel Pitch", "value": "2.6mm〜10mm" },
+        { "label": "Max Brightness", "value": "8,000nit" },
+        { "label": "Weather Rating", "value": "IP65" },
+        { "label": "Viewing Angle", "value": "160°(水平/垂直)" }
+      ]
+    },
+    {
+      "id": "rental-event",
+      "code": "RE Series",
+      "theme": "amber",
+      "tag_en": "Rental & Event",
+      "name": "レンタル・イベント向けビジョン",
+      "summary": "軽量パネルとクイックロック機構で、短期設営・撤去が必要なイベント会場や展示会に最適です。",
+      "best_for": ["イベント会場・展示会", "ステージ演出", "ポップアップ設営"],
+      "specs": [
+        { "label": "Pixel Pitch", "value": "1.9mm〜3.9mm" },
+        { "label": "Max Brightness", "value": "5,000nit" },
+        { "label": "Panel Weight", "value": "約7.5kg/枚" },
+        { "label": "Setup Time", "value": "1面あたり約15分" }
+      ]
+    },
+    {
+      "id": "creative-shape",
+      "code": "CS Series",
+      "theme": "cyan",
+      "tag_en": "Creative Shape",
+      "name": "クリエイティブ・特殊形状ビジョン",
+      "summary": "曲面・透過・異形状に対応するモジュールで、空間デザインと一体化したサイネージ演出ができます。",
+      "best_for": ["ショッピングモール", "ホテルロビー", "ブランドショップ"],
+      "specs": [
+        { "label": "Pixel Pitch", "value": "2.9mm〜4.8mm" },
+        { "label": "Transparency", "value": "透過型オプションあり" },
+        { "label": "Shape", "value": "曲面 / 異形カスタム対応" },
+        { "label": "Control", "value": "クラウド配信管理" }
+      ]
+    }
+  ]
+}
