@@ -30,6 +30,13 @@ def format_price(price) -> str:
     return f"¥{price:,}"
 
 
+def render_stock_badge(stock_status) -> str:
+    if not stock_status:
+        return ""
+    cls = "stock-out" if "なし" in stock_status else "stock-in"
+    return f'<span class="stock-badge {cls}">{e(stock_status)}</span>'
+
+
 def header(depth: str) -> str:
     """depth: '' for index.html at root, '../' for pages under products/"""
     return f"""<header>
@@ -142,7 +149,7 @@ def render_product_page(p: dict) -> str:
       {render_gallery(images, name, "../")}
     </div>
     <div class="product-info">
-      <div class="product-code">{e(p.get("code") or p["id"])}</div>
+      <div class="product-code">{e(p.get("code") or p["id"])}{render_stock_badge(p.get("stock_status"))}</div>
       <h1 class="product-name">{e(name)}</h1>
       <div class="product-price">{format_price(p.get("price"))}<span class="unit">(税込)</span></div>
       <p class="product-price-note">価格・在庫状況は変動する場合があります。最新情報はお問い合わせください。</p>

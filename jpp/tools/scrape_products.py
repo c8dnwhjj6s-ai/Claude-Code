@@ -84,20 +84,34 @@ def parse_specs(soup: BeautifulSoup) -> list[dict]:
 
 
 def parse_images(soup: BeautifulSoup, product_url: str) -> list[str]:
+    """Product photos are served through a resizing proxy whose URL is a hex-encoded,
+    NUL-separated record: <original path>\\0<size>\\0<watermark text>\\0... . Decode it
+    to pick the 400px variant and dedupe the 74px thumbnail of the same photo."""
     urls: list[str] = []
-    seen: set[str] = set()
+    seen_originals: set[str] = set()
     for img in soup.select("img"):
         src = img.get("src", "")
-        if "/data/jp-signage/_/" not in src:
+        m = re.search(r"/data/jp-signage/_/([0-9a-fA-F]+)\.\w+$", src)
+        if not m:
             continue
-        # size-400 variant only; the -74 thumbnail is a duplicate of the same photo
-        if "003430300000" not in src:
+        try:
+            raw = bytes.fromhex(m.group(1)).decode("utf-8", errors="ignore")
+        except ValueError:
             continue
-        full = urljoin(product_url, src)
-        if full not in seen:
-            seen.add(full)
-            urls.append(full)
+        parts = raw.split("\x00")
+        if len(parts) < 2:
+            continue
+        original_path, size = parts[0], parts[1]
+        if size != "400" or original_path in seen_originals:
+            continue
+        seen_originals.add(original_path)
+        urls.append(urljoin(product_url, src))
     return urls
+
+
+def parse_stock_status(soup: BeautifulSoup) -> str | None:
+    el = soup.select_one(".detail_section.stock")
+    return el.get_text(strip=True) if el else None
 
 
 def parse_product(url: str) -> dict | None:
@@ -120,6 +134,7 @@ def parse_product(url: str) -> dict | None:
         "code": code,
         "name": name,
         "price": parse_price(soup),
+        "stock_status": parse_stock_status(soup),
         "description": description,
         "specs": parse_specs(soup),
         "images": parse_images(soup, url),
