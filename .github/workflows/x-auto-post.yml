@@ -1,0 +1,60 @@
+name: X auto post (LED Vision)
+
+on:
+  schedule:
+    # Times are UTC. JST = UTC+9.
+    - cron: "0 0 * * *"   # 09:00 JST
+    - cron: "0 4 * * *"   # 13:00 JST
+    - cron: "0 10 * * *"  # 19:00 JST
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "true = generate and print only, do not post or update state"
+        required: false
+        default: "false"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: x-auto-post
+  cancel-in-progress: false
+
+jobs:
+  post:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install -r social/requirements.txt
+
+      - name: Generate and post
+        working-directory: social
+        env:
+          X_API_KEY: ${{ secrets.X_API_KEY }}
+          X_API_SECRET: ${{ secrets.X_API_SECRET }}
+          X_ACCESS_TOKEN: ${{ secrets.X_ACCESS_TOKEN }}
+          X_ACCESS_SECRET: ${{ secrets.X_ACCESS_SECRET }}
+        run: |
+          if [ "${{ github.event.inputs.dry_run }}" = "true" ]; then
+            python3 post_to_x.py --dry-run
+          else
+            python3 post_to_x.py
+          fi
+
+      - name: Commit updated post history
+        run: |
+          if ! git diff --quiet -- social/content/state.json; then
+            git config user.name "github-actions[bot]"
+            git config user.email "github-actions[bot]@users.noreply.github.com"
+            git add social/content/state.json
+            git commit -m "chore: record auto-posted tweet"
+            git push
+          else
+            echo "state.json unchanged, nothing to commit"
+          fi
