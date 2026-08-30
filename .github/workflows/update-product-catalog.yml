@@ -1,0 +1,42 @@
+name: Update product catalog (JP Signage)
+
+on:
+  schedule:
+    - cron: "0 18 * * 0"  # every Sunday 03:00 JST
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: update-product-catalog
+  cancel-in-progress: false
+
+jobs:
+  crawl:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install -r social/requirements.txt
+
+      - name: Crawl shop and rebuild catalog
+        working-directory: social
+        run: python3 update_product_catalog.py
+
+      - name: Commit updated catalog
+        run: |
+          if ! git diff --quiet -- social/content/product_catalog.json; then
+            git config user.name "github-actions[bot]"
+            git config user.email "github-actions[bot]@users.noreply.github.com"
+            git add social/content/product_catalog.json
+            git commit -m "chore: refresh product catalog"
+            git push
+          else
+            echo "product_catalog.json unchanged, nothing to commit"
+          fi
