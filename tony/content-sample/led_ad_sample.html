@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ja"><head><meta charset="UTF-8">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@700;900&display=block" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1280px;height:720px;overflow:hidden;background:#05070b;font-family:"Noto Sans JP","WenQuanYi Zen Hei",sans-serif;color:#fff}
+.s{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;opacity:0;text-align:center}
+.grid{position:absolute;inset:0;background-image:radial-gradient(circle,rgba(0,220,255,.18) 1.5px,transparent 1.6px);background-size:14px 14px}
+.glow{position:absolute;width:900px;height:900px;border-radius:50%;background:radial-gradient(circle,rgba(0,200,255,.35),transparent 60%);animation:pulse 3s ease-in-out infinite}
+@keyframes pulse{50%{transform:scale(1.15);opacity:.6}}
+.s1{animation:show 4s 0s forwards}.s2{animation:show 4s 4s forwards}.s3{animation:show 5s 8s forwards}
+@keyframes show{0%{opacity:0;transform:scale(1.08)}12%{opacity:1;transform:scale(1)}85%{opacity:1}100%{opacity:0}}
+.s3{animation:show3 5s 8s forwards}@keyframes show3{0%{opacity:0;transform:translateY(40px)}15%{opacity:1;transform:none}100%{opacity:1}}
+h1{font-size:118px;font-weight:900;line-height:1.1;letter-spacing:.02em}
+h2{font-size:78px;font-weight:900;line-height:1.25}
+.c{color:#28e0ff;text-shadow:0 0 30px rgba(40,224,255,.8)}
+.y{color:#ffd23d;text-shadow:0 0 30px rgba(255,210,61,.7)}
+.sub{font-size:40px;margin-top:28px;font-weight:700;color:#cfe8ff}
+.tel{font-size:92px;font-weight:900;margin-top:22px;letter-spacing:.04em}
+.tag{font-size:34px;font-weight:700;background:#ff3d3d;padding:10px 34px;border-radius:6px;margin-bottom:26px}
+.bar{position:absolute;bottom:0;left:0;height:10px;background:linear-gradient(90deg,#28e0ff,#ffd23d,#ff3d3d);animation:bar 13s linear forwards}
+@keyframes bar{from{width:0}to{width:100%}}
+.mark{position:absolute;top:18px;right:24px;font-size:20px;color:rgba(255,255,255,.35)}
+</style></head><body>
+<div class="grid"></div><div class="glow" style="left:190px;top:-90px"></div>
+<div class="mark">SAMPLE</div>
+<div class="s s1"><h1>昼の屋外でも、<br><span class="c">くっきり</span>見える。</h1></div>
+<div class="s s2"><h2>お店の前を通る人を<br><span class="y">「お客様」</span>に変える<br>LEDビジョン</h2></div>
+<div class="s s3"><div class="tag">無料 現地診断 受付中</div><h2>株式会社JPクリエイト</h2><div class="tel c">0120-339-114</div><div class="sub">平日10:00〜18:00</div></div>
+<div class="bar"></div>
+</body></html>
